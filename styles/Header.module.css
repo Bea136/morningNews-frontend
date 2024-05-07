@@ -1,0 +1,50 @@
+@font-face {
+  font-family:'Old London';
+  src: url('/fonts/OldLondon.ttf');
+}
+
+.header {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  width:100%;
+  border-bottom: 3px solid purple;
+}
+
+.logoContainer{
+  margin:0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width:100%;
+  border: 1px solid red
+}
+.date {
+font-size: 1,3em;
+}
+.title {
+  font-family: 'Old London';
+  font-size: 50px;
+}
+
+.navContainer {
+  margin-left: 10%;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+align-items: center;
+width: 25%;
+/* border: 1px solid blue */
+}
+
+.navItem {
+list-style-type: none;
+}
+
+.iconUser {
+height: 35px;
+/* border: 1px solid blue */
+}
