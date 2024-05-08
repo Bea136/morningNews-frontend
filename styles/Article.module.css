@@ -1,0 +1,42 @@
+.articleContainer {
+    height: 400px;
+    width: 400px;
+    margin: 10px
+}
+.topContainer {
+    padding-bottom: 15px;
+}
+
+.titleContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    height: 50px;
+}
+.line {
+    border-top: 15px solid purple;
+    margin-bottom: 15px;
+    margin-top: 15px
+}
+.title {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: left;
+}
+.bookmarkIcon{
+    margin-left: 3px;
+}
+
+.author {
+    text-align: right;
+    color: grey
+}
+
+.description {
+    font-size: 1.1em;
+    text-align: justify;
+}
+.articleImg {
+    padding-top: 15px;
+}

@@ -1,6 +1,6 @@
 import styles from '../styles/Home.module.css';
 import { useState, useEffect } from 'react'
-import Article from '/components/Article'
+import Article from './Article'
 
 function Home() {
   const [articlesData, setArticlesData] = useState([])
@@ -13,15 +13,14 @@ function Home() {
   });
   },[])
 
-  const article = articlesData.map((article, i) => {
-    <Article key={i} />
+  const articles = articlesData.map((article, i) => { 
+   return <Article key={i} title={article.title} author={article.author} urlToImage={article.urlToImage} description={article.description} url={article.url} />
   })
 
   return (
     <div>
       <main className={styles.main}>
-Home
-        
+        {articles}
       </main>
     </div>
   );

@@ -11,6 +11,7 @@
   align-items: center;
   width:100%;
   border-bottom: 3px solid purple;
+  padding-bottom: 25px;
 }
 
 .logoContainer{
@@ -20,7 +21,7 @@
   justify-content: space-around;
   align-items: center;
   width:100%;
-  border: 1px solid red
+
 }
 .date {
 font-size: 1,3em;
@@ -28,10 +29,10 @@ font-size: 1,3em;
 .title {
   font-family: 'Old London';
   font-size: 50px;
+  margin-right: 200px
 }
 
 .navContainer {
-  margin-left: 10%;
 display: flex;
 flex-direction: row;
 justify-content: space-around;
@@ -47,4 +48,27 @@ list-style-type: none;
 .iconUser {
 height: 35px;
 /* border: 1px solid blue */
+}
+.modaleContainer {
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+}
+.signUpContainer {
+  display: flex;
+  flex-direction: column;
+
+}
+.signInContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.signInTitle {
+  margin-bottom: 5px;
+}
+.signUpTitle {
+  margin-bottom: 5px;
 }
