@@ -3,10 +3,23 @@ import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
+import bookmarks from "../reducers/bookmarks";
+import { useDispatch, useSelector } from 'react-redux';
+import { addBookmarkToStore } from "../reducers/bookmarks";
+import { useState } from 'react';
 
 function Article(props) {
+const [ isBookmarked, setIsBookmarked ] = useState(false)
 
+ const dispatch = useDispatch()
 
+const handleClickBookmark = () => {
+    dispatch(addBookmarkToStore(isBookmarked))
+    //console.log(bookmarks)
+    setIsBookmarked(!isBookmarked)
+}
+
+console.log('bookmarks', bookmarks)
 
     return (
         <div>
@@ -14,7 +27,7 @@ function Article(props) {
                 <div className={styles.topContainer}>
                     <div className={styles.titleContainer}>
                         <div className={styles.title}>{props.title}</div>
-                        <FontAwesomeIcon icon={faBookmark} className={styles.bookmarkIcon} />
+                        <FontAwesomeIcon icon={faBookmark} className={styles.bookmarkIcon} onClick={()=>handleClickBookmark()} />
                     </div>
                     <div className={styles.author}>- {props.author}</div>
                 </div>

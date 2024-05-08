@@ -2,6 +2,9 @@ import styles from '../styles/Home.module.css';
 import { useState, useEffect } from 'react'
 import Article from './Article'
 import TopArticle from './TopArticle';
+import bookmarks from '../reducers/bookmarks';
+import { useDispatch, useSelector } from 'react-redux';
+import { addBookmarkToStore } from "../reducers/bookmarks";
 
 function Home() {
   const [articlesData, setArticlesData] = useState([])
@@ -19,7 +22,7 @@ function Home() {
       .catch(error => console.error('Error fetching articles:', error));
   
 }, [])
-console.log('topArticle', topArticle)
+
 
 const topArticleToDisplay = () => {
   return <TopArticle title={topArticle.title} author={topArticle.author} urlToImage={topArticle.urlToImage} description={topArticle.description} url={topArticle.url} />

@@ -1,0 +1,21 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content:center ;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 25px;
+  
+}
+.topArticle {
+
+}
+.articles {
+  display: flex;
+  flex-direction: row;
+  justify-content:center ;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-top: 25px;
+  
+}

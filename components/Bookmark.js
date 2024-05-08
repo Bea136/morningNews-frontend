@@ -1,14 +1,17 @@
-import styles from '../styles/Home.module.css';
-
+import styles from '../styles/Bookmark.module.css';
+import bookmarks from "../reducers/bookmarks";
+import { useDispatch, useSelector } from 'react-redux';
+import { addBookmarkToStore } from "../reducers/bookmarks";
 
 function Bookmark() {
-  
+  const bookmarks = useSelector((state) => state.bookmarks.value)
+
+  console.log(bookmarks)
 
   return (
     <div>
       <main className={styles.main}>
-
-        Bookmark
+      {bookmarks}
       </main>
     </div>
   );
