@@ -5,10 +5,11 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import bookmarks from '../reducers/bookmarks';
 
+const store = configureStore({
+  reducer: { bookmarks },
+});
+
 function App({ Component, pageProps }) {
-  const store = configureStore({
-    reducer: { bookmarks },
-  });
   return (
     <Provider store={store}>
       <Head>

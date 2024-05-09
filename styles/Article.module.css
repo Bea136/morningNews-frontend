@@ -1,10 +1,15 @@
 .articleContainer {
     height: 400px;
     width: 400px;
-    margin: 10px
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
 }
+
 .topContainer {
     padding-bottom: 15px;
+    border-bottom: 2px solid purple;
 }
 
 .titleContainer {
@@ -12,24 +17,23 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
-    height: 50px;
+    min-height: 70px
 }
-.line {
-    border-top: 15px solid purple;
-    margin-bottom: 15px;
-    margin-top: 15px
-}
+
 .title {
     font-size: 1.2em;
     font-weight: bold;
     text-align: left;
 }
-.bookmarkIcon{
+
+.bookmarkIcon {
     margin-left: 3px;
 }
+
 .bookmarkIcon:hover {
     opacity: 0.6;
-  }
+}
+
 .author {
     text-align: right;
     color: grey
@@ -38,8 +42,11 @@
 .description {
     font-size: 1.1em;
     text-align: justify;
-   
+
 }
+
 .articleImg {
     padding-top: 15px;
+    width: 400px;
+    height: 209px;
 }

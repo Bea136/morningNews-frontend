@@ -1,18 +1,30 @@
 import styles from '../styles/Bookmark.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import bookmarks from "../reducers/bookmarks";
 import { useDispatch, useSelector } from 'react-redux';
-import { addBookmarkToStore } from "../reducers/bookmarks";
+import { addBookmarkToStore, removeBookmarkToStore } from "../reducers/bookmarks";
+import Article from './Article';
+import TopArticle from './TopArticle';
 
-function Bookmark() {
+function Bookmark(props) {
   const bookmarks = useSelector((state) => state.bookmarks.value)
-
   console.log(bookmarks)
 
+  let bookmarkedArticles = <p>No bookmarked article </p>
+  if(bookmarks.length > 0){
+   bookmarkedArticles = bookmarks.map((bookmark, i) => {
+  return <Article key={i} {...bookmark} isBookmarked />
+})
+
+  }
   return (
     <div>
-      <main className={styles.main}>
-      {bookmarks}
-      </main>
+      <div className={styles.main}>
+<div className={styles.title}>BOOKMARKS</div>
+<div className={styles.bookmarkedArticles}>{bookmarkedArticles}</div>
+
+      </div>
     </div>
   );
 }
