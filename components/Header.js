@@ -8,6 +8,9 @@ import { Button } from 'react';
 
 function Header() {
     const [isModaleVisible, setIsModaleVisible] = useState(false)
+    const [signUpUsername, setSignUpUsername] = useState('')
+    const [signUpPassword, setSignUpPassword] = useState('')
+    const [userConnected, setUserConnected] = useState(false)
 
     const dateOptions = {
         weekday: 'long',
@@ -19,6 +22,24 @@ function Header() {
     const handleOpenModale = () => {
         setIsModaleVisible(!isModaleVisible)
     }
+
+    const userData= {
+        username  : signUpUsername,
+        password: signUpPassword 
+    }
+    const handleSignUp = () => {
+        fetch('http://localhost:3000/users/signup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(userData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data){
+            console.log( 'User succesfully registered')}
+        })
+    }
+
     if (isModaleVisible) {
         return (
             <div>
@@ -35,9 +56,9 @@ function Header() {
                     <div className={styles.modaleContainer}>
                         <div className={styles.signUpContainer}>
                             <div className={styles.signUpTitle}>SignUp</div>
-                            <input className={styles.signUpUsername} name='signUpUsername' defaultValue='Username'></input>
-                            <input className={styles.signUpPassword} name='signUpPassword' defaultValue='Password' type='password'></input>
-                            <button className={styles.signUpBtn} type='submit' >Register</button>
+                            <input className={styles.signUpUsername} name='signUpUsername' defaultValue='Username' onChange={(e)=> {setSignUpUsername(e.target.value)}} value ={signUpUsername}></input>
+                            <input className={styles.signUpPassword} name='signUpPassword' defaultValue='Password' type='password' onChange={(e)=> {setSignUpPassword(e.target.value)}} value ={signUpPassword}></input>
+                            <button className={styles.signUpBtn} type='submit' onClick={handleSignUp} >Register</button>
                         </div>
                         <div className={styles.signInContainer}>
                             <div className={styles.signInTitle}>SignIn</div>
@@ -47,14 +68,9 @@ function Header() {
                         </div>
                     </div>
                 </header>
-
-
             </div>
         )
     }
-
-
-
 
 
     return (
