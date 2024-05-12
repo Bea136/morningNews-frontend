@@ -2,23 +2,32 @@ import styles from '../styles/Article.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import bookmarks from "../reducers/bookmarks";
-import { useDispatch } from 'react-redux';
+import user from '../reducers/user';
+import { useDispatch, useSelector } from 'react-redux';
 import { addBookmarkToStore, removeBookmarkToStore } from "../reducers/bookmarks";
 
 
 function Article(props) {
+    const connectedUser = useSelector((state) => state.user.value)
     const dispatch = useDispatch();
+    
     const handleClickBookmark = (props) => {
+        if(connectedUser.isConnected){
         if (props.isBookmarked) {
             dispatch(removeBookmarkToStore(props))
         } else {
             dispatch(addBookmarkToStore(props))
         }
-    }
+    } }
+    
+       
+    
     let bookmarkStyle = {}
     if (props.isBookmarked) {
         bookmarkStyle = { 'color': '#E9BE59' }
     }
+    
+
 
     return (
         <div>

@@ -2,6 +2,7 @@ import styles from '../styles/Home.module.css';
 import { useState, useEffect } from 'react'
 import Article from './Article'
 import TopArticle from './TopArticle';
+import Header from './Header'
 import bookmarks from '../reducers/bookmarks';
 import { useSelector } from 'react-redux';
 
@@ -11,6 +12,9 @@ function Home() {
 
   const bookmarks = useSelector((state) => state.bookmarks.value)
   console.log(bookmarks)
+
+  const connectedUser = useSelector((state) => state.user.value)
+  console.log('connectedUser', connectedUser )
 
   useEffect(() => {
     fetch('http://localhost:3000/articles')

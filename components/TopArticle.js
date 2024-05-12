@@ -1,18 +1,20 @@
 import styles from '../styles/TopArticle.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addBookmarkToStore, removeBookmarkToStore } from "../reducers/bookmarks";
 
 function TopArticle(props) {
     const dispatch = useDispatch();
+    const connectedUser = useSelector((state) => state.user.value)
     const handleClickBookmark = (props) => {
+        if(connectedUser.isConnected){
         if (props.isBookmarked) {
             dispatch(removeBookmarkToStore(props))
         } else {
             dispatch(addBookmarkToStore(props))
         }
-    }
+    }}
     let bookmarkStyle = {}
     if (props.isBookmarked) {
         bookmarkStyle = { 'color': '#E9BE59' }

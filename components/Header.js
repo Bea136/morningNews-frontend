@@ -3,15 +3,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faXmark } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { useState } from 'react';
-import { Button } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import user from '../reducers/user';
+import { login, logout } from '../reducers/user';
+import { removeAllBookmarksToStore } from '../reducers/bookmarks';
 
 
 function Header() {
     const [isModaleVisible, setIsModaleVisible] = useState(false)
     const [signUpUsername, setSignUpUsername] = useState('')
     const [signUpPassword, setSignUpPassword] = useState('')
-    const [userConnected, setUserConnected] = useState(false)
+    const [signInUsername, setSignInUsername] = useState('')
+    const [signInPassword, setSignInPassword] = useState('')
 
+    const connectedUser = useSelector((state) => state.user.value)
+    //console.log('connectedUser', connectedUser)
+    const dispatch = useDispatch()
+
+    //Formate date
     const dateOptions = {
         weekday: 'long',
         year: 'numeric',
@@ -19,57 +28,86 @@ function Header() {
         day: 'numeric',
     };
     const today = new Date().toLocaleDateString('en-GB', dateOptions)
+
     const handleOpenModale = () => {
         setIsModaleVisible(!isModaleVisible)
     }
-
-    const userData= {
-        username  : signUpUsername,
-        password: signUpPassword 
-    }
+    //Add a new user in DB
     const handleSignUp = () => {
         fetch('http://localhost:3000/users/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(userData)
+            body: JSON.stringify({ username: signUpUsername, password: signUpPassword })
         })
-        .then(response => response.json())
-        .then(data => {
-            if(data){
-            console.log( 'User succesfully registered')}
-        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result) {
+                    console.log('User successfully registered')
+                    dispatch(login(signUpUsername))
+                    setSignUpUsername('')
+                    setSignUpPassword('')
+                } else {
+                    console.log(data.error)
+                }
+            })
     }
-
-    if (isModaleVisible) {
-        return (
-            <div>
-                <header className={styles.header}>
-                    <div className={styles.logoContainer}>
-                        <h2 className={styles.date}>{today}</h2>
-                        <h1 className={styles.title}>MORNING NEWS</h1>
-                        <FontAwesomeIcon icon={faXmark} className={styles.iconUser} onClick={handleOpenModale} />
-                    </div>
-                    <div className={styles.navContainer}>
-                        <Link href='/' className={styles.navItem}>ARTICLES</Link>
-                        <Link href='/bookmarks' className={styles.navItem}>BOOKMARKS</Link>
-                    </div>
-                    <div className={styles.modaleContainer}>
-                        <div className={styles.signUpContainer}>
-                            <div className={styles.signUpTitle}>SignUp</div>
-                            <input className={styles.signUpUsername} name='signUpUsername' defaultValue='Username' onChange={(e)=> {setSignUpUsername(e.target.value)}} value ={signUpUsername}></input>
-                            <input className={styles.signUpPassword} name='signUpPassword' defaultValue='Password' type='password' onChange={(e)=> {setSignUpPassword(e.target.value)}} value ={signUpPassword}></input>
-                            <button className={styles.signUpBtn} type='submit' onClick={handleSignUp} >Register</button>
-                        </div>
-                        <div className={styles.signInContainer}>
-                            <div className={styles.signInTitle}>SignIn</div>
-                            <input className={styles.signInUsername} name='signInUsername' defaultValue='Username'></input>
-                            <input className={styles.signInPassword} name='signInPassword' defaultValue='Password' type='password'></input>
-                            <button className={styles.signInBtn} type='submit' >Connect</button>
-                        </div>
-                    </div>
-                </header>
+    // Login
+    const handleSignIn = () => {
+        fetch('http://localhost:3000/users/signin', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                username: signInUsername,
+                password: signInPassword
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result) {
+                    console.log('User succesfully connected')
+                    console.log(data)
+                    dispatch(login(signInUsername))
+                    setSignInUsername('')
+                    setSignInPassword('')
+                    setIsModaleVisible(false)
+                } else {
+                    console.log(data.error)
+                }
+            })
+    }
+    //Logout
+    const handleLogout = () => {
+        dispatch(logout())
+        dispatch(removeAllBookmarksToStore())
+    }
+    //console.log(connectedUser)
+    //Content when user is login
+    let userConnectedContent = ''
+    if (connectedUser.isConnected) {
+        userConnectedContent =
+            <div className={styles.userConnectedContent}>
+                <p className={styles.welcomeText}>Welcome {connectedUser.username} !</p>
+                <button className={styles.logoutBtn} type='submit' onClick={handleLogout} >Logout</button>
             </div>
-        )
+    }
+    //Content when signup/signin modale is open
+    let modaleContent = ''
+    if (isModaleVisible) {
+        modaleContent =
+            <div className={styles.modaleContainer}>
+                <div className={styles.signUpContainer}>
+                    <div className={styles.signUpTitle}>SignUp</div>
+                    <input className={styles.signUpInput} name='signUpUsername' placeholder='Username' onChange={(e) => { setSignUpUsername(e.target.value) }} value={signUpUsername}></input>
+                    <input className={styles.signUpInput} name='signUpPassword' placeholder='Password' type='password' onChange={(e) => { setSignUpPassword(e.target.value) }} value={signUpPassword}></input>
+                    <button className={styles.signUpBtn} type='submit' onClick={handleSignUp} >Register</button>
+                </div>
+                <div className={styles.signInContainer}>
+                    <div className={styles.signInTitle}>SignIn</div>
+                    <input className={styles.signInInput} name='signInUsername' placeholder='Username' onChange={(e) => { setSignInUsername(e.target.value) }} value={signInUsername}></input>
+                    <input className={styles.signInInput} name='signInPassword' placeholder='Password' type='password' onChange={(e) => { setSignInPassword(e.target.value) }} value={signInPassword}></input>
+                    <button className={styles.signInBtn} type='submit' onClick={handleSignIn}  >Connect</button>
+                </div>
+            </div>
     }
 
 
@@ -79,12 +117,16 @@ function Header() {
                 <div className={styles.logoContainer}>
                     <h2 className={styles.date}>{today}</h2>
                     <h1 className={styles.title}>MORNING NEWS</h1>
-                    <FontAwesomeIcon icon={faUser} className={styles.iconUser} onClick={handleOpenModale} />
+                    <div className={styles.userContainer} >
+                        <FontAwesomeIcon icon={faUser} className={styles.iconUser} onClick={handleOpenModale} />
+                        {userConnectedContent}
+                    </div>
                 </div>
                 <div className={styles.navContainer}>
                     <Link href='/' className={styles.navItem}>ARTICLES</Link>
                     <Link href='/bookmarks' className={styles.navItem}>BOOKMARKS</Link>
                 </div>
+                {modaleContent}
             </header>
         </div >
     );
