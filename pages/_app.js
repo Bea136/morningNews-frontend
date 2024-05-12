@@ -2,7 +2,6 @@ import Header from '../components/Header';
 import '../styles/globals.css';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
 import bookmarks from '../reducers/bookmarks';
 import user from '../reducers/user';
 import { persistStore, persistReducer } from 'redux-persist';

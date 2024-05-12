@@ -5,33 +5,31 @@ import bookmarks from "../reducers/bookmarks";
 import user from '../reducers/user';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBookmarkToStore, removeBookmarkToStore } from "../reducers/bookmarks";
+import { Link } from "react-router-dom";
 
 
 function Article(props) {
     const connectedUser = useSelector((state) => state.user.value)
     const dispatch = useDispatch();
-    
+
     const handleClickBookmark = (props) => {
-        if(connectedUser.isConnected){
-        if (props.isBookmarked) {
-            dispatch(removeBookmarkToStore(props))
-        } else {
-            dispatch(addBookmarkToStore(props))
+        if (connectedUser.isConnected) {
+            if (props.isBookmarked) {
+                dispatch(removeBookmarkToStore(props))
+            } else {
+                dispatch(addBookmarkToStore(props))
+            }
         }
-    } }
-    
-       
-    
+    }
+
     let bookmarkStyle = {}
     if (props.isBookmarked) {
         bookmarkStyle = { 'color': '#E9BE59' }
     }
-    
-
 
     return (
         <div>
-            <div className={styles.articleContainer}>
+            <Link to={props.url} target="_blank" className={styles.articleContainer}>
                 <div className={styles.topContainer}>
                     <div className={styles.titleContainer}>
                         <div className={styles.title}>{props.title}</div>
@@ -42,9 +40,9 @@ function Article(props) {
                 <img src={props.urlToImage} alt={props.title} className={styles.articleImg} />
                 <div className={styles.description}>{props.description}</div>
                 {/* <div className={styles.author}>{props.url}</div> */}
+            </Link >
+        </div >
 
-            </div>
-        </div>
     );
 }
 
