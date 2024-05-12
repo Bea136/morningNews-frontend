@@ -24,7 +24,7 @@ function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
        <PersistGate persistor={persistor}>
-      <Head>
+      <Head >
         <title>Morning News</title>
       </Head>
       <Header/>

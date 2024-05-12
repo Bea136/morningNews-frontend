@@ -15,6 +15,7 @@ function Header() {
     const [signUpPassword, setSignUpPassword] = useState('')
     const [signInUsername, setSignInUsername] = useState('')
     const [signInPassword, setSignInPassword] = useState('')
+    const [errorMsg, setErrorMsg] = useState('')
 
     const connectedUser = useSelector((state) => state.user.value)
     //console.log('connectedUser', connectedUser)
@@ -32,6 +33,7 @@ function Header() {
     const handleOpenModale = () => {
         setIsModaleVisible(!isModaleVisible)
     }
+
     //Add a new user in DB
     const handleSignUp = () => {
         fetch('http://localhost:3000/users/signup', {
@@ -46,8 +48,11 @@ function Header() {
                     dispatch(login(signUpUsername))
                     setSignUpUsername('')
                     setSignUpPassword('')
+                    setErrorMsg('')
                 } else {
-                    console.log(data.error)
+                    setErrorMsg(data.error)
+                    setSignUpUsername('')
+                    setSignUpPassword('')
                 }
             })
     }
@@ -64,14 +69,17 @@ function Header() {
             .then(response => response.json())
             .then(data => {
                 if (data.result) {
-                    console.log('User succesfully connected')
-                    console.log(data)
+                    //console.log('User succesfully connected')
+                    //console.log(data)
                     dispatch(login(signInUsername))
                     setSignInUsername('')
                     setSignInPassword('')
                     setIsModaleVisible(false)
+                    setErrorMsg('')
                 } else {
-                    console.log(data.error)
+                    setErrorMsg(data.error)
+                    setSignInUsername('')
+                    setSignInPassword('')
                 }
             })
     }
@@ -94,20 +102,21 @@ function Header() {
     let modaleContent = ''
     if (isModaleVisible) {
         modaleContent =
-            <div className={styles.modaleContainer}>
-                <div className={styles.signUpContainer}>
-                    <div className={styles.signUpTitle}>SignUp</div>
-                    <input className={styles.signUpInput} name='signUpUsername' placeholder='Username' onChange={(e) => { setSignUpUsername(e.target.value) }} value={signUpUsername}></input>
-                    <input className={styles.signUpInput} name='signUpPassword' placeholder='Password' type='password' onChange={(e) => { setSignUpPassword(e.target.value) }} value={signUpPassword}></input>
-                    <button className={styles.signUpBtn} type='submit' onClick={handleSignUp} >Register</button>
+
+                <div className={styles.modaleContainer}>
+                    <div className={styles.signUpContainer}>
+                        <div className={styles.signUpTitle}>SignUp</div>
+                        <input className={styles.signUpInput} name='signUpUsername' placeholder='Username' onChange={(e) => { setSignUpUsername(e.target.value) }} value={signUpUsername}></input>
+                        <input className={styles.signUpInput} name='signUpPassword' placeholder='Password' type='password' onChange={(e) => { setSignUpPassword(e.target.value) }} value={signUpPassword}></input>
+                        <button className={styles.signUpBtn} type='submit' onClick={handleSignUp} >Register</button>
+                    </div>
+                    <div className={styles.signInContainer}>
+                        <div className={styles.signInTitle}>SignIn</div>
+                        <input className={styles.signInInput} name='signInUsername' placeholder='Username' onChange={(e) => { setSignInUsername(e.target.value) }} value={signInUsername}></input>
+                        <input className={styles.signInInput} name='signInPassword' placeholder='Password' type='password' onChange={(e) => { setSignInPassword(e.target.value) }} value={signInPassword}></input>
+                        <button className={styles.signInBtn} type='submit' onClick={handleSignIn}  >Connect</button>
+                    </div>
                 </div>
-                <div className={styles.signInContainer}>
-                    <div className={styles.signInTitle}>SignIn</div>
-                    <input className={styles.signInInput} name='signInUsername' placeholder='Username' onChange={(e) => { setSignInUsername(e.target.value) }} value={signInUsername}></input>
-                    <input className={styles.signInInput} name='signInPassword' placeholder='Password' type='password' onChange={(e) => { setSignInPassword(e.target.value) }} value={signInPassword}></input>
-                    <button className={styles.signInBtn} type='submit' onClick={handleSignIn}  >Connect</button>
-                </div>
-            </div>
     }
 
 
@@ -127,6 +136,7 @@ function Header() {
                     <Link href='/bookmarks' className={styles.navItem}>BOOKMARKS</Link>
                 </div>
                 {modaleContent}
+                <div>{errorMsg}</div>
             </header>
         </div >
     );

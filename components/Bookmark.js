@@ -9,10 +9,10 @@ import TopArticle from './TopArticle';
 
 function Bookmark(props) {
   const bookmarks = useSelector((state) => state.bookmarks.value)
-  console.log(bookmarks)
+  // console.log(bookmarks)
 
   const connectedUser = useSelector((state) => state.user.value)
-  console.log('connectedUser', connectedUser)
+  // console.log('connectedUser', connectedUser)
 
   let bookmarkedArticles = ''
   if (!connectedUser.isConnected) {

@@ -11,10 +11,10 @@ function Home() {
   const [topArticle, setTopArticle] = useState({})
 
   const bookmarks = useSelector((state) => state.bookmarks.value)
-  console.log(bookmarks)
+  // console.log(bookmarks)
 
   const connectedUser = useSelector((state) => state.user.value)
-  console.log('connectedUser', connectedUser )
+  // console.log('connectedUser', connectedUser )
 
   useEffect(() => {
     fetch('http://localhost:3000/articles')
