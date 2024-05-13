@@ -105,13 +105,13 @@ function Header() {
 
                 <div className={styles.modaleContainer}>
                     <div className={styles.signUpContainer}>
-                        <div className={styles.signUpTitle}>SignUp</div>
+                        <div className={styles.signUpTitle}>Sign up</div>
                         <input className={styles.signUpInput} name='signUpUsername' placeholder='Username' onChange={(e) => { setSignUpUsername(e.target.value) }} value={signUpUsername}></input>
                         <input className={styles.signUpInput} name='signUpPassword' placeholder='Password' type='password' onChange={(e) => { setSignUpPassword(e.target.value) }} value={signUpPassword}></input>
                         <button className={styles.signUpBtn} type='submit' onClick={handleSignUp} >Register</button>
                     </div>
                     <div className={styles.signInContainer}>
-                        <div className={styles.signInTitle}>SignIn</div>
+                        <div className={styles.signInTitle}>Sign in</div>
                         <input className={styles.signInInput} name='signInUsername' placeholder='Username' onChange={(e) => { setSignInUsername(e.target.value) }} value={signInUsername}></input>
                         <input className={styles.signInInput} name='signInPassword' placeholder='Password' type='password' onChange={(e) => { setSignInPassword(e.target.value) }} value={signInPassword}></input>
                         <button className={styles.signInBtn} type='submit' onClick={handleSignIn}  >Connect</button>
@@ -132,8 +132,8 @@ function Header() {
                     </div>
                 </div>
                 <div className={styles.navContainer}>
-                    <Link href='/' className={styles.navItem}>ARTICLES</Link>
-                    <Link href='/bookmarks' className={styles.navItem}>BOOKMARKS</Link>
+                    <Link href='/'><span className={styles.navItem}>ARTICLES</span></Link>
+                    <Link href='/bookmarks'><span  className={styles.navItem}>BOOKMARKS</span></Link>
                 </div>
                 {modaleContent}
                 <div>{errorMsg}</div>

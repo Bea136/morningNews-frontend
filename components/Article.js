@@ -29,20 +29,19 @@ function Article(props) {
 
     return (
         <div>
-            {/* <Link to={props.url} target="_blank" className={styles.articleContainer}> */}
+            <div className={styles.articleContainer}>
             <div className={styles.articleContainer}>
                 <div className={styles.topContainer}>
                     <div className={styles.titleContainer}>
-                        <div className={styles.title}>{props.title}</div>
+                        <a href ={props.url} target="_blank" className={styles.title}>{props.title}</a>
                         <FontAwesomeIcon icon={faBookmark} className={styles.bookmarkIcon} onClick={() => handleClickBookmark(props)} style={bookmarkStyle} />
                     </div>
                     <div className={styles.author}>- {props.author}</div>
                 </div>
-                <img src={props.urlToImage} alt={props.title} className={styles.articleImg} />
-                <div className={styles.description}>{props.description}</div>
-                {/* <div className={styles.author}>{props.url}</div> */}
+                <a href ={props.url} target="_blank"><img src={props.urlToImage} alt={props.title} className={styles.articleImg} /></a>
+                <a href ={props.url} target="_blank" className={styles.description}>{props.description}</a>
                 </div>
-            {/* </Link > */}
+            </div>
         </div >
 
     );

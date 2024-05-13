@@ -28,6 +28,7 @@
 
 .bookmarkIcon {
     margin-left: 3px;
+    cursor: pointer;
 }
 
 .bookmarkIcon:hover {

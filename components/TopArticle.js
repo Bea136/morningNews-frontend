@@ -26,15 +26,12 @@ function TopArticle(props) {
                 <img src={props.urlToImage} alt={props.title} className={styles.articleImg} />
                 <div className={styles.topContainer}>
                     <div className={styles.titleContainer}>
-                        <div className={styles.title}>{props.title}</div>
+                        <a href={props.url} target="_blank" className={styles.title}>{props.title}</a>
                         <FontAwesomeIcon icon={faBookmark} className={styles.bookmarkIcon} onClick={() => handleClickBookmark(props)} style={bookmarkStyle} />
                     </div>
                     <div className={styles.author}>- {props.author}</div>
-                    <div className={styles.description}>{props.description}</div>
+                    <a href={props.url} target="_blank" className={styles.description}>{props.description}</a>
                 </div>
-
-                {/* <div className={styles.author}>{props.url}</div> */}
-
             </div>
         </div>
     );

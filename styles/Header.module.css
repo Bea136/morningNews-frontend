@@ -10,10 +10,8 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  /* border-bottom: 1px solid purple; */
+  border-bottom: 2px solid #E9BE59;
   padding-bottom: 25px;
-
-
 }
 
 .logoContainer {
@@ -33,7 +31,7 @@
 .title {
   font-family: 'Old London';
   font-size: 50px;
- margin-right: 150px;  
+  margin-right: 150px;
 }
 
 .navContainer {
@@ -45,9 +43,12 @@
 }
 
 .navItem {
-  list-style-type: none;  
+  list-style-type: none;
 }
 
+.navItem:hover {
+  color:#E9BE59
+}
 .iconUser {
   height: 35px;
 }
@@ -56,18 +57,16 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width:25%;
+  width: 25%;
   padding-top: 15px;
   padding-bottom: 15px;
   text-align: center;
-  /* border: 1px solid greenyellow; */
 }
 
 .signUpContainer {
   display: flex;
   flex-direction: column;
   gap: 5px
-
 }
 
 .signInContainer {
@@ -84,53 +83,57 @@
   margin-bottom: 5px;
 }
 
-.signUpInput{
+.signUpInput {
   border: none;
   background-color: aliceblue;
-  color:black
+  color: black
 }
 
-.signUpBtn{
+.signUpBtn {
   border: none;
   font-size: 15px;
   font-weight: bold;
-  height: 30px; 
+  height: 30px;
   margin-top: 5px;
   background-color: #E9BE59;
   cursor: pointer;
 }
 
-.signInInput{
+.signInInput {
   border: none;
   background-color: aliceblue;
 }
-.signInBtn{
+
+.signInBtn {
   border: none;
   font-size: 15px;
   font-weight: bold;
-  height: 30px; 
+  height: 30px;
   margin-top: 5px;
   background-color: #E9BE59;
   cursor: pointer;
 }
-.userContainer{
+
+.userContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.userConnectedContent{
+
+.userConnectedContent {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.logoutBtn{
+
+.logoutBtn {
   border: none;
   font-size: 15px;
   font-weight: bold;
-  height: 25px; 
+  height: 25px;
   background-color: #E9BE59;
   cursor: pointer;
   border-radius: 5px;
-  width:100%
+  width: 100%
 }
