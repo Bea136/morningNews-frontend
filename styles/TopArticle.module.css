@@ -29,6 +29,20 @@
     font-weight: bold;
     text-align: left;
 }
+.title:link {
+    color: black;
+    text-decoration: none;
+}
+
+.title:visited {
+    /* color: #E9BE59; */
+    color: black
+}
+
+.title:hover {
+    opacity: 0.6;
+    text-decoration: none;
+}
 
 .bookmarkIcon {
     margin-left: 3px;
@@ -44,9 +58,22 @@
 }
 
 .description {
-    font-size: 1.1em;
+    font-size: 1em;
     text-align: justify;
 
+}
+.description:link {
+    color: black;
+    text-decoration: none;
+}
+.description:visited {
+    /* color: #E9BE59; */
+    color: black
+}
+
+.description:hover {
+    opacity: 0.6;
+    text-decoration: none;
 }
 
 .articleImg {

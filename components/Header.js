@@ -100,23 +100,24 @@ function Header() {
     }
     //Content when signup/signin modale is open
     let modaleContent = ''
+    let userIcon = <FontAwesomeIcon icon={faUser} className={styles.iconUser} onClick={handleOpenModale} />
     if (isModaleVisible) {
         modaleContent =
-
-                <div className={styles.modaleContainer}>
-                    <div className={styles.signUpContainer}>
-                        <div className={styles.signUpTitle}>Sign up</div>
-                        <input className={styles.signUpInput} name='signUpUsername' placeholder='Username' onChange={(e) => { setSignUpUsername(e.target.value) }} value={signUpUsername}></input>
-                        <input className={styles.signUpInput} name='signUpPassword' placeholder='Password' type='password' onChange={(e) => { setSignUpPassword(e.target.value) }} value={signUpPassword}></input>
-                        <button className={styles.signUpBtn} type='submit' onClick={handleSignUp} >Register</button>
-                    </div>
-                    <div className={styles.signInContainer}>
-                        <div className={styles.signInTitle}>Sign in</div>
-                        <input className={styles.signInInput} name='signInUsername' placeholder='Username' onChange={(e) => { setSignInUsername(e.target.value) }} value={signInUsername}></input>
-                        <input className={styles.signInInput} name='signInPassword' placeholder='Password' type='password' onChange={(e) => { setSignInPassword(e.target.value) }} value={signInPassword}></input>
-                        <button className={styles.signInBtn} type='submit' onClick={handleSignIn}  >Connect</button>
-                    </div>
+            <div className={styles.modaleContainer}>
+                <div className={styles.signUpContainer}>
+                    <div className={styles.signUpTitle}>Sign up</div>
+                    <input className={styles.signUpInput} name='signUpUsername' placeholder='Username' onChange={(e) => { setSignUpUsername(e.target.value) }} value={signUpUsername}></input>
+                    <input className={styles.signUpInput} name='signUpPassword' placeholder='Password' type='password' onChange={(e) => { setSignUpPassword(e.target.value) }} value={signUpPassword}></input>
+                    <button className={styles.signUpBtn} type='submit' onClick={handleSignUp} >Register</button>
                 </div>
+                <div className={styles.signInContainer}>
+                    <div className={styles.signInTitle}>Sign in</div>
+                    <input className={styles.signInInput} name='signInUsername' placeholder='Username' onChange={(e) => { setSignInUsername(e.target.value) }} value={signInUsername}></input>
+                    <input className={styles.signInInput} name='signInPassword' placeholder='Password' type='password' onChange={(e) => { setSignInPassword(e.target.value) }} value={signInPassword}></input>
+                    <button className={styles.signInBtn} type='submit' onClick={handleSignIn}  >Connect</button>
+                </div>
+            </div>
+        userIcon = <FontAwesomeIcon icon={faXmark} className={styles.iconUser} onClick={handleOpenModale} />
     }
 
 
@@ -127,13 +128,13 @@ function Header() {
                     <h2 className={styles.date}>{today}</h2>
                     <h1 className={styles.title}>MORNING NEWS</h1>
                     <div className={styles.userContainer} >
-                        <FontAwesomeIcon icon={faUser} className={styles.iconUser} onClick={handleOpenModale} />
+                        {userIcon}
                         {userConnectedContent}
                     </div>
                 </div>
                 <div className={styles.navContainer}>
                     <Link href='/'><span className={styles.navItem}>ARTICLES</span></Link>
-                    <Link href='/bookmarks'><span  className={styles.navItem}>BOOKMARKS</span></Link>
+                    <Link href='/bookmarks'><span className={styles.navItem}>BOOKMARKS</span></Link>
                 </div>
                 {modaleContent}
                 <div>{errorMsg}</div>

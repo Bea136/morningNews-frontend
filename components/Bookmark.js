@@ -28,7 +28,7 @@ function Bookmark(props) {
   return (
     <div>
       <div className={styles.main}>
-        <div className={styles.title}>BOOKMARKS</div>
+        <h2 className={styles.title}>BOOKMARKS</h2>
         <div className={styles.bookmarkedArticles}>{bookmarkedArticles}</div>
       </div>
     </div>

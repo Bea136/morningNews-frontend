@@ -4,7 +4,7 @@
     margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
-    margin-top: 20px;
+    margin-top: 20px;    
 }
 
 .topContainer {
@@ -17,12 +17,12 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
-    min-height: 70px
+    height: 70px
 }
 
 .title {
-    font-size: 1.2em;
-    font-weight: bold;
+  font-size: 20px;
+    font-weight: 600;
     text-align: left;
 }
 
@@ -45,9 +45,31 @@
     text-align: justify;
 
 }
+.description:link {
+    color: black;
+    text-decoration: none;
+}
 
+.description:visited {
+    /* color: #E9BE59; */
+    color: black
+}
+
+.description:hover {
+    opacity: 0.6;
+    text-decoration: none;
+}
 .articleImg {
     padding-top: 15px;
     width: 400px;
     height: 209px;
+}
+.modaleNotification{
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    color:rgb(251, 27, 27);
+}
+.crossIcon {
+    padding-left: 5px;
 }
