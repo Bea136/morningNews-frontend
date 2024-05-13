@@ -16,7 +16,7 @@ function Bookmark(props) {
 
   let bookmarkedArticles = ''
   if (!connectedUser.isConnected) {
-    bookmarkedArticles = <p className={styles.emptyContent}>You have to be connected to bookmark articles </p>
+    bookmarkedArticles = <p className={styles.emptyContent}>Sorry! You must be connected to view your bookmarked articles </p>
   } else {
     bookmarkedArticles = <p className={styles.emptyContent}>No bookmarked article </p>
     if (bookmarks.length > 0) {

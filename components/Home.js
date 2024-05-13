@@ -17,7 +17,7 @@ function Home() {
   // console.log('connectedUser', connectedUser )
 
   useEffect(() => {
-    fetch('http://localhost:3000/articles')
+    fetch('https://morning-news-backend-jade.vercel.app/articles')
       .then(response => response.json())
       .then(data => {
         if (data.articles.length > 0) {

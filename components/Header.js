@@ -37,7 +37,7 @@ function Header() {
 
     //Add a new user in DB
     const handleSignUp = () => {
-        fetch('http://localhost:3000/users/signup', {
+        fetch('https://morning-news-backend-jade.vercel.app/users/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username: signUpUsername, password: signUpPassword })
@@ -59,7 +59,7 @@ function Header() {
     }
     // Login
     const handleSignIn = () => {
-        fetch('http://localhost:3000/users/signin', {
+        fetch('https://morning-news-backend-jade.vercel.app/users/signin', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
