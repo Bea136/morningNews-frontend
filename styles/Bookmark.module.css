@@ -18,5 +18,7 @@
   align-items: baseline;
   flex-wrap: wrap;
   margin-top: 25px;
-  
+}
+.emptyContent{
+  font-size: 1.4em;
 }

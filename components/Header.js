@@ -32,6 +32,7 @@ function Header() {
 
     const handleOpenModale = () => {
         setIsModaleVisible(!isModaleVisible)
+        setErrorMsg('')
     }
 
     //Add a new user in DB
@@ -119,6 +120,7 @@ function Header() {
             </div>
         userIcon = <FontAwesomeIcon icon={faXmark} className={styles.iconUser} onClick={handleOpenModale} />
     }
+   
 
 
     return (

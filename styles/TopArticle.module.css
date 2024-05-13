@@ -29,20 +29,6 @@
     font-weight: bold;
     text-align: left;
 }
-.title:link {
-    color: black;
-    text-decoration: none;
-}
-
-.title:visited {
-    /* color: #E9BE59; */
-    color: black
-}
-
-.title:hover {
-    opacity: 0.6;
-    text-decoration: none;
-}
 
 .bookmarkIcon {
     margin-left: 3px;
@@ -53,30 +39,26 @@
 }
 
 .author {
+    font-size: 14px;
     text-align: right;
-    color: grey
+    color: grey;
+    margin-bottom: 2px;
 }
 
 .description {
     font-size: 1em;
     text-align: justify;
-
-}
-.description:link {
-    color: black;
-    text-decoration: none;
-}
-.description:visited {
-    /* color: #E9BE59; */
-    color: black
-}
-
-.description:hover {
-    opacity: 0.6;
-    text-decoration: none;
 }
 
 .articleImg {
     width: 700px;
     height: 400px
+}
+
+.modaleNotification {
+    font-size: 16px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    text-align: center;
+    color: #ff8262;
 }
