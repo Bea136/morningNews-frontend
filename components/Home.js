@@ -2,8 +2,6 @@ import styles from '../styles/Home.module.css';
 import { useState, useEffect } from 'react'
 import Article from './Article'
 import TopArticle from './TopArticle';
-import Header from './Header'
-import bookmarks from '../reducers/bookmarks';
 import { useSelector } from 'react-redux';
 
 function Home() {

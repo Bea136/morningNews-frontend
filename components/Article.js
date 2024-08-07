@@ -1,12 +1,9 @@
 import styles from '../styles/Article.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark,  faXmark } from '@fortawesome/free-solid-svg-icons';
-import bookmarks from "../reducers/bookmarks";
-import user from '../reducers/user';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBookmarkToStore, removeBookmarkToStore } from "../reducers/bookmarks";
-import { Link } from "react-router-dom";
 import React from 'react';
 
 function Article(props) {

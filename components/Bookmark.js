@@ -1,11 +1,7 @@
 import styles from '../styles/Bookmark.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookmark } from '@fortawesome/free-solid-svg-icons';
-import bookmarks from "../reducers/bookmarks";
 import { useSelector } from 'react-redux';
-import { addBookmarkToStore, removeBookmarkToStore } from "../reducers/bookmarks";
 import Article from './Article';
-import TopArticle from './TopArticle';
+
 
 function Bookmark(props) {
   const bookmarks = useSelector((state) => state.bookmarks.value)
